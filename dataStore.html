@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data Storage</title>
+</head>
+
+<body>
+    <center>
+        Input Id : <input type="number" style="width: 50px;" name="Iddata" id="Iddata">
+        Input Text : <input type="text" name="data" id="data">
+        <br>
+        <br>
+        <button type="submit" id="save">Save</button>
+        <br>
+        <br>
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+        </table>
+    </center>
+</body>
+
+</html>
+<script type="text/javascript">
+function storeData(id, name) {
+    localStorage.setItem("a"+id, name);
+}
+
+function getData(key) {
+    var keyArray = ["abhijeet","hemant"];
+    for (var i = 0; i <= localStorage.length; i++) {
+        var result = localStorage.getItem("a"+i);
+        console.log(i)
+        var dataResult =
+            document.getElementById("tbody").innerHTML += "<tr><td>" + (i + 1) + "</td><td>" + result + "</td></tr>";
+    }
+}
+
+getData();
+
+document.getElementById('save').addEventListener("click", function(event) {
+    var key = document.getElementById('Iddata').value;
+    var value = document.getElementById('data').value;
+    storeData(key, value);
+    location.reload();
+});
+</script>
